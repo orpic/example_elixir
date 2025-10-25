@@ -15,12 +15,19 @@ defmodule Example do
     Supervisor.start_link([], strategy: :one_for_one)
   end
 
+  def sum_and_average(numbers) do
+    sum = Enum.sum(numbers)
+    average = sum / Enum.count(numbers)
+    {sum, average}
+  end
+
   def main do
     numbers = ["1", "2", "3", "4", "5", "6"]
 
     # capture non anonymous function and convert to anonymous ( & )
     result = Enum.map(numbers, &String.to_integer/1)
-    IO.inspect(result)
+    # IO.inspect(result)
+    IO.inspect(sum_and_average(result))
 
     # numbers = [1, 2, 3, 4, 5]
     # Enum.each(numbers, fn num -> IO.puts(num) end)
