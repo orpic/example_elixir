@@ -20,10 +20,18 @@ defmodule Example do
     )
 
     user1 = {"Shobhit", :gold}
+    user2 = {"Sumit", :silver}
+    user3 = {"NO NAME", :platinum}
 
     {name, membership} = user1
-
     IO.puts("#{name} has a #{membership} membership")
+
+    {name, membership} = user2
+    IO.puts("#{name} has a #{membership} membership")
+
+    {name, membership} = user3
+    IO.puts("#{name} has a #{membership} membership")
+
     IO.puts("example output")
   end
 end
