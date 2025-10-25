@@ -7,6 +7,23 @@ defmodule Example do
   end
 
   def main do
+    memberships = {:gold, :silver, :platinum}
+    memberships = Tuple.append(memberships, :golden)
+
+    prices = {4, 10, 15}
+
+    avg = Tuple.sum(prices) / tuple_size(prices)
+    IO.puts(avg)
+
+    IO.puts(
+      "Average price from #{elem(memberships, 0)}, #{elem(memberships, 1)}, #{elem(memberships, 2)} is #{avg}"
+    )
+
+    user1 = {"Shobhit", :gold}
+
+    {name, membership} = user1
+
+    IO.puts("#{name} has a #{membership} membership")
     IO.puts("example output")
   end
 end
