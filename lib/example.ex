@@ -1,12 +1,13 @@
 defmodule Example do
   use Application
+  alias UUID
 
   def start(_type, _args) do
-    IO.puts(Example.hello())
+    Example.main()
     Supervisor.start_link([], strategy: :one_for_one)
   end
 
-  def hello do
-    :world
+  def main do
+    IO.puts("example")
   end
 end
