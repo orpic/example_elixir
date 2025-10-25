@@ -15,15 +15,20 @@ defmodule Example do
   end
 
   def main do
-    coreect = :rand.uniform(11) - 1
-    IO.puts(coreect)
+    correct = :rand.uniform(11) - 1
     guess = IO.gets("Guess a number between 0 and 10: ") |> String.trim() |> Integer.parse()
     IO.inspect(guess)
 
     case guess do
-      {result, ""} -> IO.puts("success #{result}")
-      {result, other} -> IO.puts("Parse partial: #{result} and other #{other}")
-      :error -> IO.puts("something went wrong")
+      {result, _} ->
+        if result === correct do
+          IO.puts("Your win")
+        else
+          IO.puts("You logse")
+        end
+
+      :error ->
+        IO.puts("something went wrong")
     end
   end
 end
