@@ -7,21 +7,30 @@ defmodule Example do
   end
 
   def main do
-    memberships = {:gold, :silver, :platinum}
-    memberships = Tuple.append(memberships, :golden)
+    memberships = %{
+      gold: :gold,
+      silver: :silver,
+      platinum: :platinum,
+      none: :none
+    }
 
-    prices = {4, 10, 15}
+    prices = %{
+      gold: 25,
+      silver: 20,
+      platinum: 15,
+      none: 0
+    }
 
-    avg = Tuple.sum(prices) / tuple_size(prices)
-    IO.puts(avg)
+    users = [
+      {"Shobhit", memberships.gold},
+      {"Sumit", memberships.silver},
+      {"NO NAME", memberships.platinum},
+      {"Ram", memberships.platinum}
+    ]
 
-    IO.puts(
-      "Average price from #{elem(memberships, 0)}, #{elem(memberships, 1)}, #{elem(memberships, 2)} is #{avg}"
-    )
-
-    users = [{"Shobhit", :gold}, {"Sumit", :silver}, {"NO NAME", :platinum}, {"Ram", :platinum}]
-
-    Enum.each(users, fn {name, membership} -> IO.puts("#{name} has a #{membership}") end)
+    Enum.each(users, fn {name, membership} ->
+      IO.puts("#{name} has a #{membership} membership paying #{prices[membership]}")
+    end)
 
     IO.puts("example output")
   end
