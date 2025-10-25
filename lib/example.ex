@@ -7,6 +7,7 @@ defmodule User do
 end
 
 defmodule Example do
+  require Integer
   use Application
 
   def start(_type, _args) do
@@ -15,20 +16,18 @@ defmodule Example do
   end
 
   def main do
-    correct = :rand.uniform(11) - 1
-    guess = IO.gets("Guess a number between 0 and 10: ") |> String.trim() |> Integer.parse()
-    IO.inspect(guess)
+    grades = [25, 50, 75, 100]
+    new = for n <- grades, do: n + 5
+    IO.inspect(new)
+    new = new ++ [125]
+    IO.inspect(new)
+    new = new ++ [150, 175]
+    IO.inspect(new)
 
-    case guess do
-      {result, _} ->
-        if result === correct do
-          IO.puts("Your win")
-        else
-          IO.puts("You logse")
-        end
+    final = [5 | new]
+    IO.inspect(final)
 
-      :error ->
-        IO.puts("something went wrong")
-    end
+    even = for n <- final, Integer.is_even(n), do: n
+    IO.inspect(even)
   end
 end
