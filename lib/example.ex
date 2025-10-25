@@ -16,18 +16,27 @@ defmodule Example do
   end
 
   def main do
-    grades = [25, 50, 75, 100]
-    new = for n <- grades, do: n + 5
-    IO.inspect(new)
-    new = new ++ [125]
-    IO.inspect(new)
-    new = new ++ [150, 175]
-    IO.inspect(new)
+    numbers = ["1", "2", "3", "4", "5", "6"]
 
-    final = [5 | new]
-    IO.inspect(final)
+    # capture non anonymous function and convert to anonymous ( & )
+    result = Enum.map(numbers, &String.to_integer/1)
+    IO.inspect(result)
 
-    even = for n <- final, Integer.is_even(n), do: n
-    IO.inspect(even)
+    # numbers = [1, 2, 3, 4, 5]
+    # Enum.each(numbers, fn num -> IO.puts(num) end)
+
+    # grades = [25, 50, 75, 100]
+    # new = for n <- grades, do: n + 5
+    # IO.inspect(new)
+    # new = new ++ [125]
+    # IO.inspect(new)
+    # new = new ++ [150, 175]
+    # IO.inspect(new)
+
+    # final = [5 | new]
+    # IO.inspect(final)
+
+    # even = for n <- final, Integer.is_even(n), do: n
+    # IO.inspect(even)
   end
 end
