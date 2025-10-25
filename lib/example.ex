@@ -19,18 +19,9 @@ defmodule Example do
       "Average price from #{elem(memberships, 0)}, #{elem(memberships, 1)}, #{elem(memberships, 2)} is #{avg}"
     )
 
-    user1 = {"Shobhit", :gold}
-    user2 = {"Sumit", :silver}
-    user3 = {"NO NAME", :platinum}
+    users = [{"Shobhit", :gold}, {"Sumit", :silver}, {"NO NAME", :platinum}, {"Ram", :platinum}]
 
-    {name, membership} = user1
-    IO.puts("#{name} has a #{membership} membership")
-
-    {name, membership} = user2
-    IO.puts("#{name} has a #{membership} membership")
-
-    {name, membership} = user3
-    IO.puts("#{name} has a #{membership} membership")
+    Enum.each(users, fn {name, membership} -> IO.puts("#{name} has a #{membership}") end)
 
     IO.puts("example output")
   end
