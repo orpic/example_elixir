@@ -21,13 +21,26 @@ defmodule Example do
     {sum, average}
   end
 
+  def print_numbers(numbers) do
+    numbers |> Enum.join(" ") |> IO.puts()
+  end
+
+  def get_numbers_from_user do
+    IO.puts("Enter number seperated by spaces: ")
+    user_input = IO.gets("") |> String.trim()
+    String.split(user_input, " ") |> Enum.map(&String.to_integer/1)
+  end
+
   def main do
-    numbers = ["1", "2", "3", "4", "5", "6"]
+    numbers = get_numbers_from_user()
 
     # capture non anonymous function and convert to anonymous ( & )
-    result = Enum.map(numbers, &String.to_integer/1)
-    # IO.inspect(result)
-    IO.inspect(sum_and_average(result))
+    # result = Enum.map(numbers, &String.to_integer/1)
+    print_numbers(numbers)
+    IO.inspect(sum_and_average(numbers))
+
+    {sum, average} = sum_and_average(numbers)
+    IO.puts("Sum is #{sum}, Avergae is #{average}")
 
     # numbers = [1, 2, 3, 4, 5]
     # Enum.each(numbers, fn num -> IO.puts(num) end)
